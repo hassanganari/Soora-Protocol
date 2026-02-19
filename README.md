@@ -5,10 +5,15 @@ Architecture-First Software Engineering for the AI Era
 If you use The Soora Protocol :
 
 ➡️ Build robust and stable large and complex project easily in record time
+
 ➡️ No spaghetti code 
+
 ➡️ Bypass Tokens limits in one chat 
+
 ➡️ Avoid AI amnesia across new chats 
+
 ➡️ Help the AI and the user debug flaws under the hood 
+
 
 
 **The Concept**
