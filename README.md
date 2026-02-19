@@ -1,13 +1,14 @@
 **The SOORA Protocol**
+
 Architecture-First Software Engineering for the AI Era
 
 If you use The Soora Protocol :
 
-=> no spaghetti code
-=> bypass Tokens limits in one chat
-=> avoid AI amnesia across new chats
-=> help the AI and the user debug flaws under the hood
-=> stable and robust product in record time
+➡️ Build robust and stable large and complex project easily in record time
+➡️ No spaghetti code 
+➡️ Bypass Tokens limits in one chat 
+➡️ Avoid AI amnesia across new chats 
+➡️ Help the AI and the user debug flaws under the hood 
 
 
 **The Concept**
