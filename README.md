@@ -1,6 +1,6 @@
 **The SOORA Protocol**
 
-Architecture-First Software Engineering for the AI Era
+Architecture First, Code next, then Audit cycle : Building complex systems using AI.
 
 If you use The Soora Protocol :
 
@@ -44,12 +44,12 @@ Now here is how you can use the Soora Protocol in a complex project :
 **The SOORA Protocol**
 
 Author: [Your Name/Handle]
-Version: 1.0 (2026 Standard)
+Version: 3.0 (2026 Standard)
 Abstract: How to build professional-grade, complex software systems without writing a single line of code by hand. A documentation-first, audit-driven methodology for the AI era that prioritizes architectural sovereignty over syntax generation.
 
-**I. The Ensemble: The 6 Pillars of Truth**
+**I. The Ensemble: The 7 Pillars of Truth**
 
-The Protocol relies on six distinct context files that must be maintained in the project root. These are not "documentation" in the traditional sense; they are Context Anchors. They force the AI to maintain a coherent state across millions of tokens of new conversations.
+The Protocol relies on seven distinct context files that must be maintained in the project root. These are not "documentation" in the traditional sense; they are Context Anchors. They force the AI to maintain a coherent state across millions of tokens of new conversations.
 They are the "Long-Term Memory" and "Constitution" of the project.
 
 > NOTE: The contents below are strictly examples based on a generic C++ project. To use this protocol, you must rewrite the contents of these files to match the specific tech stack, goals, and architectural intent of your own product.
@@ -57,40 +57,69 @@ They are the "Long-Term Memory" and "Constitution" of the project.
 **1. 01_SYSTEM_INITIALIZATION.txt**
 
 Description: The "Bootloader" for the AI session. It defines the persona (Senior Architect), the strictness level, sets the tone (Brutal/Objective), and establishes the "Laws of Physics" for the project, the forbidden behaviors, and the tech stack (e.g., Thread Safety, Memory Management rules).
+
 Timing: Pasted at the very beginning of every new context window or session.
+
 Why: AI models naturally drift toward "helpful/polite" toy code. This file forces them into "Senior Architect/Brutal" mode.
+
 
 **2. 02_PROJECT_STRUCTURE.txt**
 
 Description: A text-based tree representation of every file and folder in the repository, map of the repository/project.
+
 Timing: Updated after every file creation or deletion.
+
 Why: Prevents "File Hallucination." The AI cannot reference a file that isn't on the map. It ensures modularity is respected.
 
-**3. 03_API_HOLOGRAM.txt**
+
+**3.03_API_HOLOGRAM.txt**
 
 Description: The most critical file : The "Contract." A pseudo-code or header-style definition of every major class, struct, and public interface.
+
 Timing: Bi-Directional : Written at the start of the project after the AI gets the 01_SYSTEM_INITIALIZATION.txt, then updated along the way.
+
 Pre-Code: You define the strict interface you want.
+
 Post-Code: If the AI writes a great feature, you order it to "Extract the Hologram" and lock it into this file.
+
 Why: This prevents "Scope Creep" and "Spaghetti Logic." It is the single source of truth for how modules talk to each other.
+
 
 **4. 04_ARCHITECTURE.mermaid**
 
 Description: A visual flow chart (using Mermaid syntax) describing the system's Logic Flow, Threading Models, and Data Lifecycles.
+
 Timing: Pre-Code (Mandatory). Must be defined before implementation begins. (usually this file is written AFTER the code is done, it can be unusual, but it's super helpful to the AI to have it BEFORE the code)
+
 Why: Text is bad at describing concurrency. Diagrams force the AI to acknowledge race conditions and circular dependencies before they are written.
+
 
 **5. 05_ROADMAP.md**
 
 Description: A phased execution plan. Divides the project into Eras, Phases, and Tasks. It keeps the AI focused on the immediate task while understanding the long-term goal.
+
 Timing: Created at launch, updated after every successful Audit.
+
 Why: AI lacks long-term memory. The Roadmap provides the "North Star" so the AI understands why it is building a specific component.
 
-**6. 06_BRUTAL_AUDIT.txt**
+
+**6. 06_DEFENSIVE_ENGINEERING_DOCTRINE.txt**
+
+Description: The "Constitution" and "The Minefield Map." A list of immutable laws (Memory, Threading, GPU) and a taxonomy of known failure modes (The Threat Matrix).
+
+Timing: Read immediately after Initialization.
+
+Why: A list of threats is not a defense. This file transforms the AI from a code generator into a Defensive Systems Engineer, forcing it to prove safety *before* implementation.
+
+
+**7. 07_BRUTAL_AUDIT.txt**
 
 Description: The "Judge." A categorical list of laws, past failures, and known pitfalls (ranked by severity : Tier 1 Critical, Tier 2 DEBT and Tier 3 Nitpicks).
+
 Timing: Post-Code. The AI must read this file and judge its own output against it.
+
 Why: This is the self-correction loop. As you find bugs, you add them here as "New Laws." This ensures the AI never makes the same mistake twice.
+
 
 **II. The Workflow: The Audit Loop**
 
@@ -98,36 +127,54 @@ The SOORA Protocol is not linear; it is circular. You do not move forward until 
 
 **Phase 1: The Design (The Architecture)**
 
-Inject Context: Feed 01_SYSTEM_INITIALIZATION and 02_PROJECT_STRUCTURE.
+Inject Context: Feed 01_SYSTEM_INITIALIZATION through 06_DEFENSIVE_ENGINEERING_DOCTRINE.
+
 Define Intent: State the goal from 05_ROADMAP (e.g., "Phase 3: Event System").
-Visualize: Ask the AI to generate/update 04_ARCHITECTURE.mermaid for this specific feature.
+
+The Defensive Check: Before writing code, ask the AI: "Based on 06_DEFENSIVE_DOCTRINE, what are the Threading, Memory, and Lifecycle risks of this specific feature?"
+
+Visualize: Ask the AI to generate/update 04_ARCHITECTURE.mermaid for this specific feature to visually solve those risks.
+
 Human Role: Verify the logic. Does it look robust? If yes, proceed. (in my case, i provide the full project to the AI to verify it ! since the project is still a baby, i can dump the whole files without consuming much tokens)
+
 
 **Phase 2: The Implementation (The Code)**
 
-The Prompt: "Reference the 03_API_HOLOGRAM. Implement the feature defined in Phase 3. Adhere to the Architecture."
+The Prompt: "Reference the 03_API_HOLOGRAM. Implement the feature defined in Phase 3. Adhere to the Architecture and the Defensive Doctrine."
+
 Generation: The AI writes the code.
+
 
 **Phase 3: The Extraction (The Update)**
 
 Update Structure: Update 02_PROJECT_STRUCTURE with new files.
+
 Lock the Hologram: If the code introduced new public methods that are good, extract them into 03_API_HOLOGRAM. This freezes the interface for future context windows.
+
 
 **Phase 4: The Judgment (The Audit)**
 
-The Audit Prompt: "Act as Lead Auditor. Read 06_BRUTAL_AUDIT.txt. Review the code you just wrote. List any Tier 1 (Critical) or Tier 2 (Debt) violations. Be brutal."
+The Audit Prompt: "Act as Lead Auditor. Read 07_BRUTAL_AUDIT.txt. Review the code you just wrote against the 06_DEFENSIVE_DOCTRINE. 
+
+List any Tier 1 (Critical) or Tier 2 (Debt) violations. Be brutal."
+
 The Fix:
+
 If Flaws Found: The AI refactors immediately.
-If New Bug Found: Add it to 06_BRUTAL_AUDIT.txt as a new Law.
-The Verdict: Only when confidence is High (>95%) do you check off the item in 04_ROADMAP.
+
+If New Bug Found: Add it to 07_BRUTAL_AUDIT.txt as a new Law.
+
+The Verdict: Only when confidence is High (>95%) do you check off the item in 05_ROADMAP.
+
 
 **The Results**
 
 By adhering to this protocol, we eliminated the "Syntax Barrier." The only limit remaining is the user's ability to articulate logic and intent.
 
-Example of the 6 files needed for The Soora Protocol to effectively produce professional grade project :
+Example of the 7 files needed for The Soora Protocol to effectively produce professional grade project :
 
-**FILE 1: 01_SYSTEM_INITIALIZATION.txt**
+
+**FILE 1: 01_SYSTEM_INITIALIZATION.md**
 
 ```
 # SOORA PROTOCOL: SYSTEM INITIALIZATION
@@ -159,17 +206,18 @@ Example of the 6 files needed for The Soora Protocol to effectively produce prof
 ```
 
 
-**FILE 2: 02_PROJECT_STRUCTURE.txt**
+**FILE 2: 02_PROJECT_STRUCTURE.md**
 ```
 Project Root/
 ├── .gitignore
 ├── docs/
-│   ├── 00_SYSTEM_INITIALIZATION.txt
-│   ├── 01_PROJECT_STRUCTURE.txt
-│   ├── 02_API_HOLOGRAM.txt
-│   ├── 03_ARCHITECTURE.mermaid
-│   ├── 04_ROADMAP.md
-│   └── 05_BRUTAL_AUDIT.txt
+│   ├── 01_SYSTEM_INITIALIZATION.md
+│   ├── 02_PROJECT_STRUCTURE.md
+│   ├── 03_API_HOLOGRAM.md
+│   ├── 04_ARCHITECTURE.mermaid
+│   ├── 05_ROADMAP.md
+│   ├── 06_DEFENSIVE_ENGINEERING_DOCTRINE.md
+│   └── 07_BRUTAL_AUDIT.md
 ├── src/
 │   ├── Core/
 │   │   ├── Engine.cpp
@@ -179,7 +227,9 @@ Project Root/
 │   └── Shared/
 └── tests/
 ```
-**FILE 3: 03_API_HOLOGRAM.txt**
+
+
+**FILE 3: 03_API_HOLOGRAM.md**
 ```
 // SOORA PROTOCOL: API HOLOGRAM
 // STATUS: CORE=STABLE, MODULE_A=PENDING
@@ -207,6 +257,7 @@ class System {
 };
 ```
 
+
 **FILE 4: 04_ARCHITECTURE.mermaid**
 ```
 graph TD
@@ -230,6 +281,7 @@ graph TD
         AuthManager --> LogicController
     end
 ```
+
 
 **FILE 5: 05_ROADMAP.md**
 ```
@@ -259,13 +311,37 @@ GOAL : Implement the primary user flows.
 ```
 
 
-**FILE 6: 06_BRUTAL_AUDIT.txt**
+**FILE 6: 06_DEFENSIVE_ENGINEERING_DOCTRINE.md**
+```
+☠️ SECTION 1: LIFETIME & OWNERSHIP
+LAW: Objects are owned by their Parents (unique_ptr).
+LAW: Observers hold weak_ptr.
+VIOLATION: Creating a shared_ptr to solve a design ambiguity.
+⚡ SECTION 2: CONCURRENCY
+LAW: The Logic Thread and Worker Thread share NO mutable state.
+LAW: Communication is strictly via Thread-Safe Queues (POD copy).
+💣 SECTION 3: THE THREAT MATRIX (KNOWN PITFALLS)
+Use-After-Free: Capturing this in an async lambda.
+Vector Invalidation: Holding a pointer to a vector element while pushing back.
+Deadlock: Locking Mutex A then Mutex B in one thread, and B then A in another.
+```
+
+
+**FILE 7: 07_BRUTAL_AUDIT.md**
 ```
 # BRUTAL AUDIT MANIFEST
 
 INSTRUCTION :
 Apply this audit after EVERY major code block generation.
 
+## 0. MANDATORY DEFENSIVE CHECKLIST
+Before passing Tier 1, you must answer:
+
+Lambda Safety: Did we capture this sent to an async thread?
+
+The Barrier: Did the Worker Thread access a UI pointer?
+
+Destruction: Does the destructor touch resources used by the Sub-system?
 
 ## 1. THE EVALUATION MATRIX
 
